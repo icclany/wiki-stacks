@@ -28,6 +28,7 @@ pageSchema.statics.findByTag = function(tag){
       } ).exec() ;
   };
 
+// "Hook" Function - these can be asynchronous
 pageSchema.pre('validate', function(next, done) {
   this.urlTitle = generateUrlTitle(this.title);
   next();

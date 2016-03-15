@@ -14,5 +14,4 @@ router.get("/", function(req, res) {
 	Page.find().exec().then(function(arrayPages) {
 		res.render('index', {pages: arrayPages});
 	}); 
-
 })

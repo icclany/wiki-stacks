@@ -17,6 +17,7 @@ router.post('/', function(req, res, next) {
   var page = new Page({
   	title: req.body.title,
   	content: req.body.content,
+  	//status: req.body.status,
   	tags: req.body.tags.split(" ")
   });
   page.save().then(function(savedPage) {
@@ -50,7 +51,7 @@ router.get("/tags", function(req, res, next) {
 
 // SEARCH SIMILAR PAGES
 router.get('/:urlTitle/similar', function (req, res, next) {
-	Page.findOne({ urlTitle: req.params.urlTitle }).exec().then(function(foundPage) {
+	Page.findOne({ urlTitle: req.params.urlTitle }).exec(function(err, foundPage) {
 		return foundPage.findSimilarTags().then(function(foundPages){
 			res.render('index', {pages: foundPages});
 			}, function(error) {
