@@ -13,6 +13,7 @@ router.get("/", function(req, res, next){
 
 // POST: MAKE NEW PAGE AND REDIRECT TO IT
 router.post('/', function(req, res, next) {
+// Could have just said var page = new Page(req.body)
   var page = new Page({
   	title: req.body.title,
   	content: req.body.content,
